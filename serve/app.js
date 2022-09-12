@@ -37,5 +37,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-module.exports = app;
+app.listen(3000,()=>{
+  console.log("serve is runing http://127.0.0.1:3000")
+})
+// module.exports = app;
