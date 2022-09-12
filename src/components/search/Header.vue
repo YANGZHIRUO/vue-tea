@@ -24,7 +24,7 @@ export default {
     },
     goSearchList(){
       this.$router.push({
-        name:"searchlist"
+        name:"list"
       })
     }
   }

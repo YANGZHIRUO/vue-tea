@@ -1,0 +1,145 @@
+<template>
+<div class="search_list">
+  <div class="headers">
+  <Header></Header>
+    <ul>
+      <div>
+          <li>综合</li>
+      </div>
+      <li>
+        <div>价格</div>
+        <div class="search-filter">
+            <i class="iconfont icon-shangjiantou"></i>
+            <i class="iconfont icon-xiajiantou"></i>
+        </div>
+      </li>
+      <li>
+        <div>销量</div>
+        <div class="search-filter">
+            <i class="iconfont icon-shangjiantou"></i>
+            <i class="iconfont icon-xiajiantou"></i>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+  <section>
+    <ul>
+      <li>
+        <img src="../../assets/images/goods.jpg" alt="">
+        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
+        <div>
+          <div>
+            <span>$</span>
+            <b>238</b>
+          </div>
+          <div>立即购买</div>
+        </div>
+      </li>
+
+
+
+      <li>
+        <img src="../../assets/images/goods.jpg" alt="">
+<!--        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>-->
+        <div>
+          <div>
+            <span>$</span>
+            <b>238</b>
+          </div>
+          <div>立即购买</div>
+        </div>
+      </li>
+
+      <li>
+        <img src="../../assets/images/goods.jpg" alt="">
+<!--        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>-->
+        <div>
+          <div>
+            <span>$</span>
+            <b>238</b>
+          </div>
+          <div>立即购买</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <Tabbar></Tabbar>
+</div>
+</template>
+
+<script>
+import Header from "@/components/search/Header.vue"
+import Tabbar from "@/components/common/Tabbar";
+export default {
+  name: "Search_list",
+  components:{
+    Header,
+    Tabbar
+  }
+}
+</script>
+
+<style scoped>
+.search_list{
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+section{
+  flex: 1;
+  overflow: hidden;
+}
+.headers ul{
+  display: flex;
+  padding: 10px 0;
+  font-size: 16px;
+  justify-content: space-around;
+}
+.headers ul>div:first-child{
+  display: flex;
+  align-items: center;
+}
+.headers ul li{
+  display: flex;
+  align-items: center;
+
+}
+.headers ul li>div{
+  padding: 0 3px;
+}
+.headers ul li .search-filter{
+  display: flex;
+  flex-direction: column;
+}
+.search-filter i{
+  font-size: 4px;
+  color: rgb(136, 136, 136);
+}
+section ul li img{
+  width: 170px;
+  height: 170px;
+}
+section ul{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+section ul li{
+  /*width: 50%;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+section ul li h3{
+  width: 90%;
+  padding: 10px;
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+</style>

@@ -5,7 +5,8 @@ import List from "../views/List"
 import Cart from "../views/Cart"
 import My from "../views/List"
 import Search from "../views/Search"
-import searchlist from "../views/Search-list"
+import searchlist from "../views/search/search-index"
+import search_list from "../views/search/Search_list"
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,9 +44,14 @@ const routes = [
     component:Search,
     children:[
       {
-        path:"searchlist",
-        name:"searchlist",
+        path:"/",
+        name:"index",
         component:searchlist
+      },
+      {
+        path:"list",
+        name:"list",
+        component:search_list
       }
     ]
   },
