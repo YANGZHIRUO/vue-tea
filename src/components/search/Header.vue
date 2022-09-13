@@ -5,7 +5,7 @@
     </div>
     <div class="search-main">
       <i class="iconfont icon-fangdajing"></i>
-      <form action="" >
+      <form action=""  @keyup.enter="goSearchList">
         <input type="text" placeholder="搜索你喜欢的产品">
       </form>
     </div>

@@ -24,11 +24,13 @@
     </ul>
   </div>
   <section>
+
+
     <ul>
       <li>
         <img src="../../assets/images/goods.jpg" alt="">
         <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
-        <div>
+        <div class="price">
           <div>
             <span>$</span>
             <b>238</b>
@@ -41,8 +43,8 @@
 
       <li>
         <img src="../../assets/images/goods.jpg" alt="">
-<!--        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>-->
-        <div>
+        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
+        <div class="price">
           <div>
             <span>$</span>
             <b>238</b>
@@ -53,8 +55,8 @@
 
       <li>
         <img src="../../assets/images/goods.jpg" alt="">
-<!--        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>-->
-        <div>
+        <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
+        <div class="price">
           <div>
             <span>$</span>
             <b>238</b>
@@ -115,7 +117,7 @@ section{
   flex-direction: column;
 }
 .search-filter i{
-  font-size: 4px;
+  font-size: 8px;
   color: rgb(136, 136, 136);
 }
 section ul li img{
@@ -128,11 +130,13 @@ section ul{
   justify-content: space-between;
 }
 section ul li{
-  /*width: 50%;*/
+  width: 50%;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
 }
 section ul li h3{
   width: 90%;
@@ -141,5 +145,26 @@ section ul li h3{
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: #222;
+}
+section ul li .price{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 10px 0;
+}
+section ul li .price div:last-child{
+  color: #fff;
+  background-color: red;
+  padding: 3px 6px;
+  border-radius: 3px;
+}
+section ul li .price div:first-child span{
+  color: #b0352f;
+}
+section ul li .price div:first-child b{
+  color: #b0352f;
+  font-size: 16px;
 }
 </style>

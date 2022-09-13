@@ -7,25 +7,116 @@
     <title>Document</title>
     <style>
       *{
-    margin: 0;
-    padding: 0;
-}
-li{
-    list-style: none
-}
-.n{
-    width: 200px;
-    height: 200px;
-    border: 44px solid;
-    color: blue;
-    background-color: aqua;
-}
-
+        padding: 0;
+        margin: 0;
+      }
+      ul,li{ 
+        padding:0;
+        margin:0;
+        list-style:none
+    }
+    .section{
+        width: 100vw;
+        height: 100vh;
+        background-color: rgb(205, 205, 204);
+        overflow: hidden;
+    }
+    .section ul li img{
+        width: 170px;
+        height: 170px;
+    }
+    .section ul li{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* box-sizing: border-box; */
+    }
+    .section ul{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 10px;
+    }
+    .section ul li h3{
+        width: 90%;
+        padding: 10px;
+        font: 10px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .section ul li>div{
+      
+        /* display: flex;
+        padding: 3px; */
+    }
+    .price{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:20px 0;
+    }
+    .price div:last-child{
+        padding: 10px;
+        background-color: red;
+        border-radius: 5px;
+    }
+    .price div:first-child{
+        padding: 0 15px;
+    }
+    .price b{
+        font-size: 16px;
+        color: red;
+    }
     </style>
 </head>
 <body>
-<div class="n">ee</div>
-   
+    <div class="section">
+    <ul>
+        <li>
+            <img src="./0149490_0.jpg" alt="">
+            <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
+            <div class="price">
+                <div>
+                    <span>$</span>
+                    <b>238</b>
+                </div>
+                <div>
+                    立即购买
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="./0149490_0.jpg" alt="">
+            <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
+            <div class="price">
+                <div>
+                    <span>$</span>
+                    <b>238</b>
+                </div>
+                <div>
+                    立即购买
+                </div>
+            </div>
+        </li>
+        <li>
+            <img src="./0149490_0.jpg" alt="">
+            <h3>赛事茶-味道良好，优质奖肉桂160g</h3>
+            <div class="price">
+                <div>
+                    <span>$</span>
+                    <b>238</b>
+                </div>
+                <div>
+                    立即购买
+                </div>
+                
+            </div>
+        </li>
+    </ul>
+</div>
 
 </body>
 </html>
