@@ -2,20 +2,19 @@
   <div class="search-index">
     <Header></Header>
     <section>
-      <div class="search-history">
+      <div class="search-history" v-if="searchArrey.length">
         <h2>
           <i class="iconfont icon-shijian"></i>
           <span>历史搜索</span>
-          <span>清空搜索记录</span>
+          <span @click="deleteStorage">清空搜索记录</span>
         </h2>
         <ul>
-          <li>茶叶</li>
-          <li>茶叶</li>
-          <li>茶叶</li>
-          <li>茶叶</li>
-          <li>茶叶</li>
+          <li v-for="(item,index) in searchArrey" :key="index">{{item}}</li>
         </ul>
         <hr/>
+      </div>
+      <div v-else>
+        暂无搜索记录...
       </div>
 
     </section>
@@ -27,13 +26,39 @@
 <script>
 import Header from "@/components/search/Header.vue"
 import Tabbar from '@/components/common/Tabbar.vue'
+import {MessageBox} from"mint-ui"
 // import Like from "@/components/home/Like.vue"
 export default {
   name: "Search",
+  data(){
+    return{
+      searchArrey:[]
+    }
+  },
+  methods:{
+    deleteStorage(){
+      MessageBox({
+        title:"提示",
+        message:"确认中止此操作吗",
+        showCancelButton:true
+      }).then(
+          res=>{
+            if(res=="confirm"){
+              localStorage.removeItem("searchList")
+              this.searchArrey=[]
+            }
+          }
+      )
+    }
+
+  },
   components:{
     Tabbar,
     Header,
     // Like
+  },
+  created() {
+    this.searchArrey=JSON.parse(localStorage.getItem("searchList")||[])
   }
 }
 </script>

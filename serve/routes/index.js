@@ -1,6 +1,8 @@
 var express = require('express');
+const connection= require('../db/sql');
 var router = express.Router();
-
+// var connection=require("../db/sql")
+// console.log(connectio,888);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -304,7 +306,20 @@ router.get("/api/index_list/6/data/1",(req,res)=>{
   })
 })
 
+//搜索商品的接口
+router.get("/api/goods/shopList",(req,res)=>{
+  let name=req.query.searchName
+  const commority_data="select * from goods_list where name like '%"+name+"%'"
+  connection.query(commority_data,(err,result)=>{
+      res.send({
+        code:0,
+        data:result
+      })
 
+  })
+
+
+})
 
 router.get("/api/index_list/5/data/1",(req,res)=>{
   res.send({

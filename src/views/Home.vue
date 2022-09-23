@@ -46,7 +46,8 @@ import Recommend from "@/components/home/Recommend.vue"
 import BetterScroll from "better-scroll"
 import Like from "@/components/home/Like.vue"
 import Ad from "@/components/home/Ad";
-
+import {Indicator} from "mint-ui"
+import http from "@/common/api/request.js"
 export default {
   name: 'Home',
   data(){
@@ -79,24 +80,24 @@ export default {
     console.log("mounted");
   },
   created() {
-    console.log("create");
     this.getData()
 
   },
   methods: {
     async getData() {
-      let res=await axios({
+      let res=await http.$axios({
         url: "/api/index_list/0/data/1"
       })
-        console.log("data");
-        console.log(res);
-        this.items = res.data.data.topBar
+        // console.log("data");
+        // console.log(res);
+        this.items = res.topBar
         // 初始化(首页数据)newData
-        this.newData = res.data.data.data
-        console.log(res.data.data.data, "home组件数据解析完毕时，请求/api/index_list/0/data/1，获得section中所有数据(arrey)");
+        this.newData = res.data
+        // Indicator.close()
+        // console.log(res.data.data.data);
       // })
       this.$nextTick(()=>{
-        console.log(777);
+        // console.log(777);
         new BetterScroll(".wrapper",{
           movable:true,
           zoom:true,
@@ -104,22 +105,22 @@ export default {
       })
 
     },
-    addData(index) {
-      axios({
+    async addData(index) {
+      let res=await http.$axios({
         //点哪一个发哪一个请求
         url: "/api/index_list/" + index + "/data/1"
-      }).then(res => {
-        if (!(res.data.data instanceof Array)) {
-          this.newData = res.data.data.data
-          console.log(`你点击的位置索引为${index},由于这个索引请求数据data为${res.data}，所以深层取出，改变newData,刷新页面`)
-        } else {
-          //
-          this.newData = res.data.data
-          console.log(`你点击的位置索引为${index},发送请求获得type为adList和likeList相应数据`)
-        }
-        // console.log(res.data.data);
       })
+      if (!(res instanceof Array)) {
+        this.newData = res.data
+        // console.log(`你点击的位置索引为${index},由于这个索引请求数据data为${res.data}，所以深层取出，改变newData,刷新页面`)
+      } else {
+        //
+        this.newData = res
+        // console.log(`你点击的位置索引为${index},发送请求获得type为adList和likeList相应数据`)
+      }
     },
+        // console.log(res.data.data);
+
     changeTab(item, index) {
       this.addData(index)
       // console.log(index);

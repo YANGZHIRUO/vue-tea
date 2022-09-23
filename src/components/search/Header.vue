@@ -5,8 +5,8 @@
     </div>
     <div class="search-main">
       <i class="iconfont icon-fangdajing"></i>
-      <form action=""  @keyup.enter="goSearchList">
-        <input type="text" placeholder="搜索你喜欢的产品">
+      <form action="" onsubmit="return false" @keyup.enter="goSearchList">
+        <input type="text" placeholder="搜索你喜欢的产品" v-model="searchValue">
       </form>
     </div>
     <div class="search-btn" @click="goSearchList">
@@ -18,13 +18,46 @@
 <script>
 export default {
   name: "Header",
+  data(){
+    return{
+      searchValue:this.$route.query.key || "",
+      searchArr:[]
+    }
+  },
+  watch:{
+    $route(){
+
+    }
+  },
+  created() {
+
+  },
   methods:{
     goBack(){
       this.$router.back()
     },
     goSearchList(){
+      if(!this.searchValue){
+        return
+      }
+      if( !localStorage.getItem("searchList")){
+        // console.log(33);
+        localStorage.setItem("searchList","[]")
+      }else{
+        this.searchArr=JSON.parse(localStorage.getItem("searchList"))
+      }
+      this.searchArr.unshift(this.searchValue)
+      this.searchArr=[...new Set(this.searchArr)]
+      localStorage.setItem("searchList",JSON.stringify(this.searchArr))
+      if(this.searchValue==this.$route.query.key){
+        return false
+      }
+
       this.$router.push({
-        name:"list"
+        name:"list",
+        query:{
+          key:this.searchValue
+        }
       })
     }
   }
