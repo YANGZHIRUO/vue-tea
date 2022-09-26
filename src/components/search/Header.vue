@@ -52,7 +52,6 @@ export default {
       if(this.searchValue==this.$route.query.key){
         return false
       }
-
       this.$router.push({
         name:"list",
         query:{

@@ -3,23 +3,32 @@
   <div class="headers">
   <Header></Header>
     <ul>
-      <div>
-          <li>综合</li>
-      </div>
-      <li>
-        <div>价格</div>
-        <div class="search-filter">
-            <i class="iconfont icon-shangjiantou"></i>
-            <i class="iconfont icon-xiajiantou"></i>
+      <li v-for="(item,index) in searchList.data" :key="index" @click="changeTab(index)">
+        <div :class="searchList.currentIndex == index ? 'active':''">
+          {{item.name}}
+        </div>
+        <div v-if="item.name!='综合'" class="search-filter">
+            <i class="iconfont icon-shangjiantou" :class="item.status==1 ?'active':''"></i>
+            <i class="iconfont icon-xiajiantou" :class="item.status==2 ?'active':''"></i>
         </div>
       </li>
-      <li>
-        <div>销量</div>
-        <div class="search-filter">
-            <i class="iconfont icon-shangjiantou"></i>
-            <i class="iconfont icon-xiajiantou"></i>
-        </div>
-      </li>
+<!--      <li>-->
+<!--          <div>综合</div>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <div>价格</div>-->
+<!--        <div class="search-filter">-->
+<!--            <i class="iconfont icon-shangjiantou"></i>-->
+<!--            <i class="iconfont icon-xiajiantou"></i>-->
+<!--        </div>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--        <div>销量</div>-->
+<!--        <div class="search-filter">-->
+<!--            <i class="iconfont icon-shangjiantou"></i>-->
+<!--            <i class="iconfont icon-xiajiantou"></i>-->
+<!--        </div>-->
+<!--      </li>-->
 
     </ul>
   </div>
@@ -57,12 +66,25 @@ export default {
   name: "Search_list",
   data(){
     return{
-      goodsList:[]
+      goodsList:[],
+      searchList:{
+        currentIndex:0,
+        data:[
+          {name:"综合"},
+          {name:"价格",status:1},
+          {name:"销量",status:2},
+        ]
+      }
     }
   },
   components:{
     Header,
     Tabbar
+  },
+  watch:{
+    $route(){
+      this.getData()
+    }
   },
   created() {
     this.getData()
@@ -77,6 +99,9 @@ export default {
       }).then(res=>{
         this.goodsList=res
       })
+    },
+    changeTab(index){
+      this.searchList.currentIndex=index
     }
   }
 }
@@ -116,9 +141,12 @@ section{
   display: flex;
   flex-direction: column;
 }
+.active{
+  color: red;
+}
 .search-filter i{
   font-size: 8px;
-  color: rgb(136, 136, 136);
+  /*color: rgb(136, 136, 136);*/
 }
 section ul li img{
   width: 170px;
@@ -167,4 +195,5 @@ section ul li .price div:first-child b{
   color: #b0352f;
   font-size: 16px;
 }
+
 </style>
